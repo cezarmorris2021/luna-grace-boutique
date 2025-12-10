@@ -239,23 +239,23 @@
       margin-left: 0.3rem;
     }
     .card-actions {
-      display: flex;
-      justify-content: space-between;
-      gap: 0.4rem;
+      margin-top: 0.4rem;
     }
-    .btn-outline,
-    .btn-ghost {
-      flex: 1;
+    .btn-outline {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
       border-radius: 999px;
       padding: 0.45rem 0.6rem;
-      border: 1px solid var(--border);
+      border: 1px solid var(--accent);
       font-size: 0.8rem;
       text-align: center;
+      color: var(--accent);
+      background: transparent;
+      cursor: pointer;
     }
-    .btn-outline { border-color: var(--accent); color: var(--accent); }
     .btn-outline:hover { background: var(--accent-soft); }
-    .btn-ghost { color: var(--muted); }
-    .btn-ghost:hover { border-color: var(--accent); }
 
     /* Reviews */
     .reviews {
@@ -329,8 +329,8 @@
     </div>
     <div>
       <p class="hero-text" style="font-size:0.85rem;">
-        🌙 <strong>Dropship ready:</strong> Replace each “Shop now” link with your supplier or Shopify
-        product URL. The design stays the same – only the links change.
+        🌙 <strong>Dropship ready:</strong> Each “Buy Now” button goes straight to PayPal checkout using
+        <strong>cezarmorris2021@gmail.com</strong>. Later we can swap to their PayPal emails in one shot.
       </p>
       <p class="hero-text" style="font-size:0.8rem;">
         Owner: <strong>Guadalupe (Angelrose)</strong><br/>
@@ -344,7 +344,7 @@
   <div class="container trust-row">
     <div class="trust-pill">⭐ Curated accessories & fragrance</div>
     <div class="trust-pill">🎁 Perfect for gifts & everyday</div>
-    <div class="trust-pill">🛒 Dropship-ready product layout</div>
+    <div class="trust-pill">🛒 PayPal Buy Now ready</div>
   </div>
 </section>
 
@@ -356,6 +356,7 @@
     </div>
 
     <div class="product-grid">
+      <!-- NECKLACE -->
       <article class="card">
         <div class="card-tag">New · Bestseller</div>
         <h3 class="card-title">
@@ -363,32 +364,52 @@
           <span class="badge-best">Best seller</span>
         </h3>
         <p class="card-desc">Delicate double-layered chain that works with tees, blouses and dresses.</p>
-        <p class="card-price">Target price: $18–$24</p>
+        <p class="card-price">Price: $24.99</p>
         <div class="card-actions">
-          <a href="https://example.com" class="btn-outline">Shop now</a>
-          <a href="#" class="btn-ghost">View supplier</a>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_xclick">
+            <input type="hidden" name="business" value="cezarmorris2021@gmail.com">
+            <input type="hidden" name="item_name" value="Minimalist Gold Layered Necklace">
+            <input type="hidden" name="amount" value="24.99">
+            <input type="hidden" name="currency_code" value="USD">
+            <button type="submit" class="btn-outline">Buy Now</button>
+          </form>
         </div>
       </article>
 
+      <!-- HANDBAG -->
       <article class="card">
         <div class="card-tag">New</div>
         <h3 class="card-title">Soft Crossbody Handbag</h3>
         <p class="card-desc">Compact everyday bag with adjustable strap and gold hardware.</p>
-        <p class="card-price">Target price: $29–$39</p>
+        <p class="card-price">Price: $39.99</p>
         <div class="card-actions">
-          <a href="https://example.com" class="btn-outline">Shop now</a>
-          <a href="#" class="btn-ghost">View supplier</a>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_xclick">
+            <input type="hidden" name="business" value="cezarmorris2021@gmail.com">
+            <input type="hidden" name="item_name" value="Soft Crossbody Handbag">
+            <input type="hidden" name="amount" value="39.99">
+            <input type="hidden" name="currency_code" value="USD">
+            <button type="submit" class="btn-outline">Buy Now</button>
+          </form>
         </div>
       </article>
 
+      <!-- SCARF -->
       <article class="card">
         <div class="card-tag">New</div>
         <h3 class="card-title">Satin Hair &amp; Neck Scarf</h3>
         <p class="card-desc">Lightweight satin square in neutral tones for hair, neck or bag handle.</p>
-        <p class="card-price">Target price: $9–$14</p>
+        <p class="card-price">Price: $14.99</p>
         <div class="card-actions">
-          <a href="https://example.com" class="btn-outline">Shop now</a>
-          <a href="#" class="btn-ghost">View supplier</a>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_xclick">
+            <input type="hidden" name="business" value="cezarmorris2021@gmail.com">
+            <input type="hidden" name="item_name" value="Satin Hair & Neck Scarf">
+            <input type="hidden" name="amount" value="14.99">
+            <input type="hidden" name="currency_code" value="USD">
+            <button type="submit" class="btn-outline">Buy Now</button>
+          </form>
         </div>
       </article>
     </div>
@@ -403,36 +424,57 @@
     </div>
 
     <div class="product-grid">
+      <!-- EARRING SET -->
       <article class="card">
         <div class="card-tag">Jewelry</div>
         <h3 class="card-title">Crystal Stud Earring Set</h3>
         <p class="card-desc">Three pairs in one set: clear, rose and champagne tones.</p>
-        <p class="card-price">Target price: $12–$18</p>
+        <p class="card-price">Price: $17.99</p>
         <div class="card-actions">
-          <a href="https://example.com" class="btn-outline">Shop now</a>
-          <a href="#" class="btn-ghost">View supplier</a>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_xclick">
+            <input type="hidden" name="business" value="cezarmorris2021@gmail.com">
+            <input type="hidden" name="item_name" value="Crystal Stud Earring Set">
+            <input type="hidden" name="amount" value="17.99">
+            <input type="hidden" name="currency_code" value="USD">
+            <button type="submit" class="btn-outline">Buy Now</button>
+          </form>
         </div>
       </article>
 
+      <!-- BRACELETS -->
       <article class="card">
         <div class="card-tag">Bracelets</div>
         <h3 class="card-title">Stackable Beaded Bracelets</h3>
         <p class="card-desc">Set of 4 neutral beads that can be worn alone or layered.</p>
-        <p class="card-price">Target price: $15–$22</p>
+        <p class="card-price">Price: $21.99</p>
         <div class="card-actions">
-          <a href="https://example.com" class="btn-outline">Shop now</a>
-          <a href="#" class="btn-ghost">View supplier</a>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_xclick">
+            <input type="hidden" name="business" value="cezarmorris2021@gmail.com">
+            <input type="hidden" name="item_name" value="Stackable Beaded Bracelets">
+            <input type="hidden" name="amount" value="21.99">
+            <input type="hidden" name="currency_code" value="USD">
+            <button type="submit" class="btn-outline">Buy Now</button>
+          </form>
         </div>
       </article>
 
+      <!-- TOTE -->
       <article class="card">
         <div class="card-tag">Handbags</div>
         <h3 class="card-title">Structured Tote Bag</h3>
         <p class="card-desc">Roomy tote with interior pockets for everyday errands.</p>
-        <p class="card-price">Target price: $39–$55</p>
+        <p class="card-price">Price: $54.99</p>
         <div class="card-actions">
-          <a href="https://example.com" class="btn-outline">Shop now</a>
-          <a href="#" class="btn-ghost">View supplier</a>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_xclick">
+            <input type="hidden" name="business" value="cezarmorris2021@gmail.com">
+            <input type="hidden" name="item_name" value="Structured Tote Bag">
+            <input type="hidden" name="amount" value="54.99">
+            <input type="hidden" name="currency_code" value="USD">
+            <button type="submit" class="btn-outline">Buy Now</button>
+          </form>
         </div>
       </article>
     </div>
@@ -447,36 +489,57 @@
     </div>
 
     <div class="product-grid">
+      <!-- PERFUME -->
       <article class="card">
         <div class="card-tag">Perfume</div>
         <h3 class="card-title">Blush Petals Eau de Parfum</h3>
         <p class="card-desc">Soft floral blend with notes of peony, jasmine and vanilla.</p>
-        <p class="card-price">Target price: $29–$45</p>
+        <p class="card-price">Price: $44.99</p>
         <div class="card-actions">
-          <a href="https://example.com" class="btn-outline">Shop now</a>
-          <a href="#" class="btn-ghost">View supplier</a>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_xclick">
+            <input type="hidden" name="business" value="cezarmorris2021@gmail.com">
+            <input type="hidden" name="item_name" value="Blush Petals Eau de Parfum">
+            <input type="hidden" name="amount" value="44.99">
+            <input type="hidden" name="currency_code" value="USD">
+            <button type="submit" class="btn-outline">Buy Now</button>
+          </form>
         </div>
       </article>
 
+      <!-- BODY MIST -->
       <article class="card">
         <div class="card-tag">Body mist</div>
         <h3 class="card-title">Coconut Glow Body Mist</h3>
         <p class="card-desc">Beachy coconut and warm amber – light and easy to wear.</p>
-        <p class="card-price">Target price: $14–$22</p>
+        <p class="card-price">Price: $19.99</p>
         <div class="card-actions">
-          <a href="https://example.com" class="btn-outline">Shop now</a>
-          <a href="#" class="btn-ghost">View supplier</a>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_xclick">
+            <input type="hidden" name="business" value="cezarmorris2021@gmail.com">
+            <input type="hidden" name="item_name" value="Coconut Glow Body Mist">
+            <input type="hidden" name="amount" value="19.99">
+            <input type="hidden" name="currency_code" value="USD">
+            <button type="submit" class="btn-outline">Buy Now</button>
+          </form>
         </div>
       </article>
 
+      <!-- GIFT SET -->
       <article class="card">
         <div class="card-tag">Gift set</div>
         <h3 class="card-title">Weekend Glow Mini Trio</h3>
         <p class="card-desc">Three travel sprays in floral, fruity and warm notes.</p>
-        <p class="card-price">Target price: $24–$34</p>
+        <p class="card-price">Price: $34.99</p>
         <div class="card-actions">
-          <a href="https://example.com" class="btn-outline">Shop now</a>
-          <a href="#" class="btn-ghost">View supplier</a>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_xclick">
+            <input type="hidden" name="business" value="cezarmorris2021@gmail.com">
+            <input type="hidden" name="item_name" value="Weekend Glow Mini Trio">
+            <input type="hidden" name="amount" value="34.99">
+            <input type="hidden" name="currency_code" value="USD">
+            <button type="submit" class="btn-outline">Buy Now</button>
+          </form>
         </div>
       </article>
     </div>
@@ -527,4 +590,5 @@
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 </script>
 </body>
-</html>
+  </html>
+  
