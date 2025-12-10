@@ -4,7 +4,297 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Luna Grace Boutique – Accessories & Fragrance</title>
-  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-soft: #0f172a;
+      --accent: #f973b3;
+      --accent-soft: rgba(249, 115, 179, 0.16);
+      --accent-gold: #fbbf24;
+      --text-main: #f9fafb;
+      --text-soft: #e5e7eb;
+      --muted: #94a3b8;
+      --card: #020617;
+      --border: rgba(148, 163, 184, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+      background: radial-gradient(circle at top, #0f172a 0, #020617 50%, #000 100%);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    /* Header */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(15, 23, 42, 0.96);
+      border-bottom: 1px solid rgba(30, 64, 175, 0.8);
+      backdrop-filter: blur(16px);
+    }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 0;
+      gap: 1rem;
+    }
+    .logo {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+    .logo-main {
+      font-size: 1.2rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .logo-main span { color: var(--accent); }
+    .logo-tag {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      font-size: 0.86rem;
+    }
+    .nav a {
+      position: relative;
+      padding: 0.25rem 0.1rem;
+      color: var(--text-soft);
+    }
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.12rem;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(to right, var(--accent), var(--accent-gold));
+      transition: width 140ms ease-out;
+    }
+    .nav a:hover { color: var(--text-main); }
+    .nav a:hover::after { width: 100%; }
+    .nav-cta {
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      padding: 0.4rem 0.9rem;
+      background: var(--accent-soft);
+      color: #fdf2f8;
+      font-size: 0.8rem;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 3rem 0 2.5rem;
+      background: radial-gradient(circle at top, #1e293b 0, #020617 50%, #020617 100%);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.9fr);
+      gap: 1.5rem;
+    }
+    @media (max-width: 840px) {
+      .hero-grid { grid-template-columns: minmax(0, 1fr); }
+    }
+    .hero h1 {
+      margin: 0 0 0.7rem;
+      font-size: clamp(2.1rem, 3vw + 1.3rem, 2.8rem);
+      letter-spacing: -0.03em;
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--accent), #facc15);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero-text {
+      margin: 0 0 1.4rem;
+      font-size: 0.95rem;
+      color: var(--text-soft);
+      max-width: 34rem;
+    }
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+    .btn-primary,
+    .btn-secondary {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      padding: 0.7rem 1.5rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #fb7185);
+      color: #1f2933;
+      box-shadow: 0 12px 26px rgba(249, 115, 179, 0.55);
+    }
+    .btn-secondary {
+      border-color: var(--border);
+      background: #020617;
+      color: var(--text-main);
+    }
+
+    /* Social proof strip */
+    .trust-strip {
+      padding: 0.7rem 0 0.4rem;
+      border-bottom: 1px solid rgba(30, 64, 175, 0.7);
+      background: rgba(15, 23, 42, 0.9);
+    }
+    .trust-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      font-size: 0.78rem;
+      color: var(--text-soft);
+      justify-content: center;
+    }
+    .trust-pill {
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: radial-gradient(circle at top left, var(--accent-soft), #020617 60%);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    /* Sections */
+    .section { padding: 2.5rem 0; }
+    .section-header { margin-bottom: 1.5rem; }
+    .section-title {
+      margin: 0 0 0.3rem;
+      font-size: 1.35rem;
+      letter-spacing: -0.02em;
+    }
+    .section-subtitle {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1rem;
+    }
+    .card {
+      background: var(--card);
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      padding: 0.9rem;
+      box-shadow: 0 18px 32px rgba(15, 23, 42, 0.9);
+      font-size: 0.88rem;
+    }
+    .card-tag {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .card-title {
+      margin: 0 0 0.25rem;
+      font-size: 0.98rem;
+    }
+    .card-desc {
+      margin: 0 0 0.35rem;
+      color: var(--muted);
+    }
+    .card-price {
+      font-size: 0.86rem;
+      color: var(--accent-gold);
+      margin-bottom: 0.5rem;
+    }
+    .badge-best {
+      display: inline-block;
+      font-size: 0.7rem;
+      padding: 0.12rem 0.45rem;
+      border-radius: 999px;
+      background: rgba(248, 250, 252, 0.08);
+      border: 1px solid rgba(251, 191, 36, 0.8);
+      margin-left: 0.3rem;
+    }
+    .card-actions {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.4rem;
+    }
+    .btn-outline,
+    .btn-ghost {
+      flex: 1;
+      border-radius: 999px;
+      padding: 0.45rem 0.6rem;
+      border: 1px solid var(--border);
+      font-size: 0.8rem;
+      text-align: center;
+    }
+    .btn-outline { border-color: var(--accent); color: var(--accent); }
+    .btn-outline:hover { background: var(--accent-soft); }
+    .btn-ghost { color: var(--muted); }
+    .btn-ghost:hover { border-color: var(--accent); }
+
+    /* Reviews */
+    .reviews {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+    .review-card {
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: radial-gradient(circle at top left, rgba(249, 115, 179, 0.08), #020617 60%);
+      padding: 0.9rem;
+      font-size: 0.85rem;
+    }
+    .review-name {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+    .review-stars {
+      font-size: 0.8rem;
+      color: #facc15;
+      margin-bottom: 0.35rem;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid rgba(15, 23, 42, 0.95);
+      padding: 1.6rem 0 2.1rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.7rem;
+    }
+  </style>
 </head>
 <body>
 
@@ -39,10 +329,22 @@
     </div>
     <div>
       <p class="hero-text" style="font-size:0.85rem;">
-        🌙 <strong>Dropship ready:</strong> Each “Shop now” button can link straight to your supplier
-        (AliExpress, CJdropshipping, etc.) or to a product page in Shopify/WooCommerce later.
+        🌙 <strong>Dropship ready:</strong> Replace each “Shop now” link with your supplier or Shopify
+        product URL. The design stays the same – only the links change.
+      </p>
+      <p class="hero-text" style="font-size:0.8rem;">
+        Owner: <strong>Guadalupe (Angelrose)</strong><br/>
+        Contact: <strong>Angelrosestar3360@gmail.com</strong>
       </p>
     </div>
+  </div>
+</section>
+
+<section class="trust-strip">
+  <div class="container trust-row">
+    <div class="trust-pill">⭐ Curated accessories & fragrance</div>
+    <div class="trust-pill">🎁 Perfect for gifts & everyday</div>
+    <div class="trust-pill">🛒 Dropship-ready product layout</div>
   </div>
 </section>
 
@@ -50,13 +352,16 @@
   <div class="container">
     <div class="section-header">
       <h2 class="section-title">Featured collection</h2>
-      <p class="section-subtitle">Swap links and prices to match the products you choose to dropship.</p>
+      <p class="section-subtitle">Starter best-sellers you can plug real suppliers into.</p>
     </div>
 
     <div class="product-grid">
       <article class="card">
         <div class="card-tag">New · Bestseller</div>
-        <h3 class="card-title">Minimalist Gold Layered Necklace</h3>
+        <h3 class="card-title">
+          Minimalist Gold Layered Necklace
+          <span class="badge-best">Best seller</span>
+        </h3>
         <p class="card-desc">Delicate double-layered chain that works with tees, blouses and dresses.</p>
         <p class="card-price">Target price: $18–$24</p>
         <div class="card-actions">
@@ -78,7 +383,7 @@
 
       <article class="card">
         <div class="card-tag">New</div>
-        <h3 class="card-title">Satin Hair & Neck Scarf</h3>
+        <h3 class="card-title">Satin Hair &amp; Neck Scarf</h3>
         <p class="card-desc">Lightweight satin square in neutral tones for hair, neck or bag handle.</p>
         <p class="card-price">Target price: $9–$14</p>
         <div class="card-actions">
@@ -94,7 +399,7 @@
   <div class="container">
     <div class="section-header">
       <h2 class="section-title">Everyday accessories</h2>
-      <p class="section-subtitle">Jewelry and pieces that can be worn on repeat.</p>
+      <p class="section-subtitle">Jewelry and pieces she can wear on repeat.</p>
     </div>
 
     <div class="product-grid">
@@ -183,9 +488,29 @@
     <div class="section-header">
       <h2 class="section-title">About Luna Grace Boutique</h2>
       <p class="section-subtitle">
-        Here you can write a short story about your mom – why she loves helping women feel put together,
-        and how every order supports your family.
+        Luna Grace Boutique is owned by <strong>Guadalupe (Angelrose)</strong>, who believes every woman
+        deserves to feel elegant and put-together without spending luxury prices. Each piece is chosen to be
+        wearable, giftable and beautiful – from everyday accessories to fragrance that feels special.
       </p>
+    </div>
+
+    <div class="reviews">
+      <article class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-name">“Feels like a little treat”</div>
+        <p>
+          “I love that I can grab a necklace or perfume without overspending. Everything feels like a little
+          self-care moment.”
+        </p>
+      </article>
+
+      <article class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-name">“Perfect gift shop”</div>
+        <p>
+          “This is my go-to place when I need a gift for my mom, sister or friends. The bundles and sets make it easy.”
+        </p>
+      </article>
     </div>
   </div>
 </section>
@@ -193,7 +518,7 @@
 <footer class="footer">
   <div class="container footer-inner">
     <span>© <span id="year"></span> Luna Grace Boutique. All rights reserved.</span>
-    <span>Accessories · Fragrance · Gifts</span>
+    <span>Contact: Angelrosestar3360@gmail.com · Accessories · Fragrance · Gifts</span>
   </div>
 </footer>
 
